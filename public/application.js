@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 function player_hits(){
   $(document).on("click", "#hit_form input", function(){
-    alert("player_hits!");
+  /* alert("player_hits!");  */
     $.ajax({
       type: "POST",
       url: "/game/player/hit"
@@ -20,7 +20,7 @@ function player_hits(){
 
 function player_stays(){
   $(document).on("click", "#stay_form input", function(){
-    alert("player_stays!");
+ /*   alert("player_stays!"); */
     $.ajax({
       type: "POST",
       url: "/game/player/stay"
@@ -33,7 +33,7 @@ function player_stays(){
 
 function dealer_hits(){
   $(document).on("click", "#dealer_hit_btn input", function(){
-    alert("dealer hits!");
+ /*   alert("dealer hits!"); */
     $.ajax({
       type: "POST",
       url: "/game/dealer/hit"
