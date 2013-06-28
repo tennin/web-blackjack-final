@@ -47,23 +47,23 @@ total = 0
         when 'K' then 'king'
       end
     end
-    "<img src = '/images/cards/#{suit}_#{value}.jpg'>"
+    "<img src = '/images/cards/#{suit}_#{value}.jpg' class='card_image' >"
   end
 
   def win!(msg)
-    @success = "Congratulations, #{msg}.  #{session[:player_name]} won #{session[:bet_amount]}"
+    @winner = "Congratulations, #{msg}.  #{session[:player_name]} won #{session[:bet_amount]}"
     session[:player_pot] += session[:bet_amount]
     @play_again_buttons = true
   end
 
   def lose!(msg)
-    @error = "Ooops sorry, #{msg}.  #{session[:player_name]} lost #{session[:bet_amount]}"
+    @loser = "Ooops sorry, #{msg}.  #{session[:player_name]} lost #{session[:bet_amount]}"
     session[:player_pot] -= session[:bet_amount]
     @play_again_buttons = true
   end
 
   def tie!(msg)
-    @success = "It is a tie. #{msg}"
+    @winner = "It is a tie. #{msg}"
     @play_again_buttons = true
   end
 
@@ -148,7 +148,7 @@ post '/game/player/hit' do
 
     @show_hit_stay_button = false
   end
-  erb :game
+  erb :game, layout: false
 end
 
 post '/game/player/stay' do
@@ -174,7 +174,7 @@ get '/game/dealer' do
   else  #< 17
     @show_dealer_hit_button = true
   end
-erb :game
+erb :game, layout: false
 end
 
 post '/game/dealer/hit' do
@@ -197,7 +197,7 @@ get '/game/compare' do
 
     tie!("both #{session[:player_name]} and dealer stay at #{player_total}. ")
   end
-  erb :game
+  erb :game, layout: false
 end
 
 

@@ -1,0 +1,15 @@
+#hit_form {
+  float: left;
+  margin-bottom: 3px;
+    margin-bottom: 3px;
+}
+
+#stay_form{
+  float:left;
+  margin-left: 5px;
+  margin-bottom: 3px;
+}
+
+.card_image {
+  margin: 0px 0px 5px 10px;
+}

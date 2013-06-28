@@ -1,3 +1,11 @@
+<div id="game">
+    <%if @loser %>
+      <div class="alert alert-error"><%=@loser%></div>
+    <% end %>
+    <%if @winner %>
+      <div class="alert alert-succes"><%=@winner%></div>
+    <% end %>
+
 <h2>Hi <%= session[:player_name] %>, welcome to Blackjack</h2>
 
 <% if @play_again_buttons %>
@@ -22,7 +30,7 @@
     <% if @show_dealer_hit_button  %>
      <p>
       <h5>dealer has <%= total(session[:dealer_cards]) %> and must hit</h5>
-       <form action='/game/dealer/hit' method='post'>
+       <form id="dealer_hit_btn" action='/game/dealer/hit' method='post'>
           <input type='submit' class='btn btn-inverse' value="click to see dealer's card &hearts;">
        </form>
     <% end %>
@@ -32,7 +40,7 @@
 </br>
 </br>
 
-<div class="well">
+<div class="well" id="player_cards">
 <p><%= session[:player_name] %>'s cards are:</p>
     <% session[:player_cards].each do |card|  %>
     <%=    card_image(card)  %>
@@ -45,13 +53,14 @@
 
 <% if @show_hit_stay_button %>
 
-<form action='/game/player/hit' method='post'>
+<form id="hit_form" action='/game/player/hit' method='post'>
 <input type='submit' class='btn btn-success' value='hit'>
 </form>
 
-<form action='/game/player/stay' method='post'>
+<form id="stay_form" action='/game/player/stay' method='post'>
 <input type='submit' class='btn btn-warning' value='stay'>
 </form>
 
 <% end %>
+</div>
 </div>
